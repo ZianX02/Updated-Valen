@@ -128,6 +128,7 @@
         let messageIndex = 0;
         let yesBtnSize = 20; 
         let yesBtnPadding = 10;
+        let yesBtnScale = 1;
 
         function accept() {
             document.body.innerHTML = `<h1>Yeeeyyy! Labyuuuu!! 💖</h1>
@@ -163,12 +164,25 @@
             noBtn.style.top = `${newY}px`;
         }
 
-        function increaseYesButton() {
+       function increaseYesButton() {
             let yesBtn = document.querySelector('.yes');
-            yesBtnSize += 30; // Increase font size
-            yesBtnPadding += 30; // Increase padding
-            yesBtn.style.fontSize = `${yesBtnSize}px`;
-            yesBtn.style.padding = `${yesBtnPadding}px ${yesBtnPadding * 3}px`;
+            yesBtnScale += 0.5; // Increase scale factor
+            yesBtn.style.transform = `scale(${yesBtnScale})`;
+
+            if (yesBtnScale > 5) {
+                yesBtn.style.position = "fixed";
+                yesBtn.style.top = "0";
+                yesBtn.style.left = "0";
+                yesBtn.style.width = "100vw";
+                yesBtn.style.height = "100vh";
+                yesBtn.style.fontSize = "5rem";
+                yesBtn.style.borderRadius = "0";
+                yesBtn.textContent = "You have no choice! 😆";
+                yesBtn.onclick = accept;
+
+                // Remove the No button when it reaches full size
+                document.querySelector('.no').remove();
+            }
         }
 
         function openPopup(src) {
