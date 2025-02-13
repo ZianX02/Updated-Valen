@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Invitation</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: red;
+            font-size: 2.5rem;
+        }
+        .gif {
+            width: 200px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine T^T ?</h1>
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" class="gif" alt="Cute Cat">
+        <div class="buttons">
+            <button class="btn yes" onclick="accept()">Yes</button>
+            <button class="btn no" onclick="persuade(); moveNoButton();">No</button>
+        </div>
+    </div>
+    <script>
+        let messages = [
+            "Lalabb :<",
+            "Lahhh, labyuuu :<",
+            "Ayaw mo talaga :<?  ",
+            "Mag Mcdo tayo ^^ ",
+            "sad na si meowyy😿",
+            "Yess ka na po :<",
+            "Iloveyouuu lovee, say yes pleasee T^T"
+        ];
+        let messageIndex = 0;
+
+        function accept() {
+            document.body.innerHTML = `<h1>Yeeeyyy! Labyuuuu!! 💖</h1>
+                                       <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" class="gif">`;
+        }
+
+        function persuade() {
+            let noBtn = document.querySelector('.no');
+            noBtn.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+
+        function moveNoButton() {
+            let noBtn = document.querySelector('.no');
+            let maxX = window.innerWidth - noBtn.clientWidth;
+            let maxY = window.innerHeight - noBtn.clientHeight;
+            let newX = Math.random() * maxX;
+            let newY = Math.random() * maxY;
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        }
+    </script>
+</body>
+</html>
