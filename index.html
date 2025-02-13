@@ -24,6 +24,8 @@
         }
         .buttons {
             margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 90px;
         }
         .btn {
             font-size: 20px;
@@ -110,7 +112,7 @@
         <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" class="gif" alt="Cute Cat">
         <div class="buttons">
             <button class="btn yes" onclick="accept()">Yes</button>
-            <button class="btn no" onclick="persuade(); moveNoButton();">No</button>
+            <button class="btn no" onclick="persuade(); moveNoButton(); increaseYesButton();">No</button>
         </div>
     </div>
     <script>
@@ -124,6 +126,8 @@
             "Iloveyouuu lovee, say yes pleasee T^T"
         ];
         let messageIndex = 0;
+        let yesBtnSize = 20; 
+        let yesBtnPadding = 10;
 
         function accept() {
             document.body.innerHTML = `<h1>Yeeeyyy! Labyuuuu!! 💖</h1>
@@ -158,6 +162,26 @@
             noBtn.style.left = `${newX}px`;
             noBtn.style.top = `${newY}px`;
         }
+
+        function increaseYesButton() {
+            let yesBtn = document.querySelector('.yes');
+            yesBtnSize += 5; // Increase font size
+            yesBtnPadding += 3; // Increase padding
+            yesBtn.style.fontSize = `${yesBtnSize}px`;
+            yesBtn.style.padding = `${yesBtnPadding}px ${yesBtnPadding * 2}px`;
+        }
+
+        function openPopup(src) {
+            document.getElementById('popup-img').src = src;
+            document.getElementById('popup').classList.add('active');
+            document.body.classList.add('blur');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+            document.body.classList.remove('blur');
+        }
+
     </script>
 </body>
 </html>
