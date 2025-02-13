@@ -162,9 +162,9 @@
             noBtn.style.top = `${newY}px`;
         }
 
-      function increaseYesButton() {
+       function increaseYesButton() {
             let yesBtn = document.querySelector('.yes');
-            yesBtnScale += 0.5; // Increase scale factor
+            yesBtnScale += 0.2; // Increase scale factor
             yesBtn.style.transform = `scale(${yesBtnScale})`;
 
             // When the button gets large enough, make it full-screen
@@ -174,9 +174,12 @@
                 yesBtn.style.left = "0";
                 yesBtn.style.width = "100vw";
                 yesBtn.style.height = "100vh";
-                yesBtn.style.fontSize = "min(10vw, 5rem)"; /* Ensures readable text on both PC and mobile */
+                yesBtn.style.fontSize = "min(10vw, 6rem)"; /* Ensures text is readable on PC & mobile */
                 yesBtn.style.borderRadius = "0";
-                yesBtn.textContent = "Wala ka na pong choice kundi mag YES";
+                yesBtn.style.display = "flex";
+                yesBtn.style.justifyContent = "center";
+                yesBtn.style.alignItems = "center";
+                yesBtn.textContent = "Wala ka ng choice lalabb, mag YES ka po ^^ ";
                 yesBtn.onclick = accept;
 
                 // Remove the No button when it reaches full size
