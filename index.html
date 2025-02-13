@@ -126,8 +126,6 @@
             "Iloveyouuu lovee, say yes pleasee T^T"
         ];
         let messageIndex = 0;
-        let yesBtnSize = 20; 
-        let yesBtnPadding = 10;
         let yesBtnScale = 1;
 
         function accept() {
@@ -164,20 +162,21 @@
             noBtn.style.top = `${newY}px`;
         }
 
-       function increaseYesButton() {
+      function increaseYesButton() {
             let yesBtn = document.querySelector('.yes');
             yesBtnScale += 0.5; // Increase scale factor
             yesBtn.style.transform = `scale(${yesBtnScale})`;
 
-            if (yesBtnScale > 5) {
+            // When the button gets large enough, make it full-screen
+            if (yesBtnScale > 3) {
                 yesBtn.style.position = "fixed";
                 yesBtn.style.top = "0";
                 yesBtn.style.left = "0";
                 yesBtn.style.width = "100vw";
                 yesBtn.style.height = "100vh";
-                yesBtn.style.fontSize = "5x";
+                yesBtn.style.fontSize = "min(10vw, 5rem)"; /* Ensures readable text on both PC and mobile */
                 yesBtn.style.borderRadius = "0";
-                yesBtn.textContent = "You have no choice ^^, pindutin mo na kasi YES";
+                yesBtn.textContent = "Wala ka na pong choice kundi mag YES";
                 yesBtn.onclick = accept;
 
                 // Remove the No button when it reaches full size
